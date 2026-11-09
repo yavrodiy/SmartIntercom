@@ -34,7 +34,6 @@
 2. Аудиофайлы в виде образа LittleFS [ESP32_mklittlefs_0x2B0000.bin](bin/ESP32_mklittlefs_0x2B0000.bin) - Прошивать в адрес 0x2B0000
 
 ### Самостоятельная компиляция прошивки ESPHome (на примере HomeAssistant):
-!!! Использовать ESPHome Builder версии < 2025.2.0 !!!
 1. Установить из магазина дополнений "ESPHome" и "FileEditor"
 2. Запустить дополнение FileEditor и перейти к рабочий каталог /сonfig/esphome/
 3. Используя меню "File Upload" загрузить файл [smartintercom-esp32.yaml](ESPHome/smartintercom-esp32.yaml)
@@ -49,6 +48,9 @@
 12. По желанию добавить карточку устройства на панель lovelace из файла [card.yaml](ESPHome/card.yaml) проекта. ![](images/card_2.png)
 
 ## Дополнительно:
+Подготовка wav аудио-файла, пример команды:
+ 	`ffmpeg -i access_allowed_test.wav -ac 1 -ar 44100 -c:a pcm_s16le access_allowes.wav`
+
 Добавление управления через Телеграм:
 https://github.com/SCratORS/SmartIntercom/issues/3
 https://github.com/SCratORS/SmartIntercom/issues/6
