@@ -3,7 +3,7 @@
     <img width="100%" src="https://github.com/user-attachments/assets/3a0c55de-07b2-4b87-9379-20e4fee1e5f3"> 
 </p>
 
-### P.S. Данная прошивка подходит для устройств собраных на базе [Smart модуль для Laskomex LM-8D](https://shop.scrators.ru/index.php?route=product/product&product_id=27).
+### P.S. Данная прошивка подходит для устройств собранных на базе [Smart модуль для Laskomex LM-8D](https://shop.scrators.ru/index.php?route=product/product&product_id=27).
 
 
 ## Хотите купить:
@@ -33,17 +33,18 @@
 1. Основной файл прошивки [ESP32_smartintercom.bin](bin/ESP32_smartintercom.bin) - Прошивать в адрес 0x0
 2. Аудиофайлы в виде образа LittleFS [ESP32_mklittlefs_0x2B0000.bin](bin/ESP32_mklittlefs_0x2B0000.bin) - Прошивать в адрес 0x2B0000
 
-### Самостоятельная компиляция прошивки ESPHome (на примере HomeAssistant):
+### Самостоятельная компиляция прошивки ESPHome(ESPHome Builder версии >= 2026.10)(на примере HomeAssistant):
 1. Установить из магазина дополнений "ESPHome" и "FileEditor"
 2. Запустить дополнение FileEditor и перейти к рабочий каталог /сonfig/esphome/
-3. Используя меню "File Upload" загрузить файл [smartintercom-esp32.yaml](ESPHome/smartintercom-esp32.yaml)
+3. Используя меню "File Upload" загрузить файл [smartintercom-esp32_2026.10.yaml](ESPHome/smartintercom-esp32_2026.10.yaml)
 4. Используя меню "File Upload" загрузить файл [partitions_esp32.csv](ESPHome/partitions_esp32.csv)
-4. Используя меню "Create Folder" создать папку lib и перейти в неё
-5. Используя меню "File Upload" загрузить файлы библиотек [ESPAudio.h](ESPHome/lib/ESPAudio.h) и [ESPUtils.h](ESPHome/lib/ESPUtils.h)
-6. Запустить дополнение ESPHome, - там появится проект "smartintercom" в статусе OFFLINE
+4. Используя меню "Create Folder" создать папку my_components и в ней папки компонентов espaudio и esputils
+5. Используя меню "File Upload" загрузить файлы компонента espaudio: [espaudio.h](ESPHome/my_components/espaudio/espaudio.h) и [__init__.py](ESPHome/my_components/espaudio/__init__.py)
+6. Используя меню "File Upload" загрузить файлы компонента esputils: [ESPUtils.h](ESPHome/my_components/esputils/ESPUtils.h), [text_sensor.py](ESPHome/my_components/esputils/text_sensor.py) и [__init__.py](ESPHome/my_components/esputils/__init__.py)
+7. Запустить дополнение ESPHome, - там появится проект "smartintercom" в статусе OFFLINE
 8. Нажать на проекте "...", выбрать меню "INSTALL", выбрать способ прошивки (для компиляции можно выбрать "Manual Download - Modern Format"). Во время компиляции все необходимые библиотеки ESPHome загрузит сам
 9. После успешной компиляции, если устройство уже было прошито ESPHome и подключено к сети, то статус проекта станет ONLINE.
-10. Если прошивается впервые, то можно тутже из ESPHome прошить через программатор.
+10. Если прошивается впервые, то можно тут же из ESPHome прошить через программатор.
 11. Если прошивается впервые, то после успешной прошивки, и выхода устройства в Онлайн, нужно загрузить аудио файлы, для этого подключаемся к плате по FTP (пассивный режим, анонимное соединение без пароля и без TLS), и копируем файлы *.mp3 из папки [data](data/) в корень FTP
 12. По желанию добавить карточку устройства на панель lovelace из файла [card.yaml](ESPHome/card.yaml) проекта. ![](images/card_2.png)
 
