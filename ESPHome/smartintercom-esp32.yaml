@@ -1,4 +1,4 @@
-substitutions:
+сsubstitutions:
   dev_name: smartintercom
   
 #ESP32 Определение нужных GPIO
@@ -494,13 +494,13 @@ select:
     initial_option: ${input_select_disable}
     on_value:
       lambda: |-
-        if (id(mode_select).current_option() == "${input_select_disable}") {
-          id(current_mode) = 0;
-        } else if (id(mode_select).current_option() == "${input_select_reject}") {
-          id(current_mode) = 1;
-        } else {
-          id(current_mode) = 2;
-        }
+          if (id(mode_select).state == "${input_select_disable}") {
+            id(current_mode) = 0;
+          } else if (id(mode_select).state == "${input_select_reject}") {
+            id(current_mode) = 1;
+          } else {
+            id(current_mode) = 2;
+          }
         
 text_sensor:
   - platform: template
